@@ -1,0 +1,576 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { capabilities } from '../data/capabilities';
+
+const doctrine = [
+  {
+    num: '01',
+    title: 'Offense informs defense',
+    body: 'Every defensive recommendation we make is grounded in vulnerabilities we have personally found and exploitation we have personally performed. We defend against what works, not what is marketed.',
+  },
+  {
+    num: '02',
+    title: 'Evidence over theater',
+    body: 'No severity-score hand-waving, no compliance box-checking dressed up as security. Findings ship with proof, root cause, and a fix — or they do not ship.',
+  },
+  {
+    num: '03',
+    title: 'Engineering, not resale',
+    body: 'We are not a reseller with a services arm. We build harnesses, detections, and pipelines from first principles, and everything we build in your environment belongs to you.',
+  },
+  {
+    num: '04',
+    title: 'Small team, deep bench',
+    body: 'Vazkeft stays deliberately small. The researcher who scopes your engagement is the one who executes it — and the one who answers the phone afterward.',
+  },
+];
+
+const ticker = [
+  'VULNERABILITY RESEARCH',
+  'REVERSE ENGINEERING',
+  'PENETRATION TESTING',
+  'ADVERSARY EMULATION',
+  'BUG BOUNTY OPERATIONS',
+  'DETECTION ENGINEERING',
+  'INCIDENT RESPONSE',
+  'CI/CD HARDENING',
+  'SUPPLY-CHAIN SECURITY',
+  'FUZZING',
+];
+---
+
+<BaseLayout
+  title="Vazkeft LLC — Cybersecurity Research & Engineering for Defense Missions"
+  description="Vazkeft LLC is a cybersecurity research and engineering firm: vulnerability research, offensive security, managed cyber defense, and secure software delivery for defense and critical-infrastructure missions."
+>
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="hero">
+    <canvas id="radar" class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="grid-bg" aria-hidden="true"></div>
+
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">Vazkeft LLC · Cybersecurity Research &amp; Engineering</p>
+        <h1 class="h-xl">
+          Find the flaws first.<br />
+          <span class="hero__accent">Hold the line</span> after.
+        </h1>
+        <p class="lede">
+          Vazkeft is an offense-informed cybersecurity firm. We hunt vulnerabilities the way
+          adversaries do, defend networks with detections we have proven against live tradecraft,
+          and build delivery pipelines that ship secure software to demanding missions.
+        </p>
+        <div class="hero__actions">
+          <a href="/capabilities/" class="btn btn--solid">View capabilities</a>
+          <a href="/contact/" class="btn btn--ghost">Engage us</a>
+        </div>
+      </div>
+
+      <aside class="hero__panel ticks" aria-label="Operational readout">
+        <p class="hero__panel-title">// OPERATIONAL READOUT</p>
+        <dl class="hero__readout">
+          <div><dt>POSTURE</dt><dd>OFFENSE-INFORMED</dd></div>
+          <div><dt>CAPABILITY AREAS</dt><dd><span data-count="4" data-suffix="">0</span></dd></div>
+          <div><dt>DEFENSE OPS</dt><dd>24/7 COVERAGE</dd></div>
+          <div><dt>FOOTPRINT</dt><dd>REMOTE-FIRST · USA</dd></div>
+          <div><dt>ALIGNMENT</dt><dd>NIST 800-171 / 800-53</dd></div>
+          <div><dt>STATUS</dt><dd class="hero__status"><span class="hero__dot"></span>ACCEPTING ENGAGEMENTS</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ── TICKER ───────────────────────────────────────────── -->
+  <div class="tickerband" aria-hidden="true">
+    <div class="tickerband__track">
+      {[...ticker, ...ticker].map((t) => <span>{t}<i>◆</i></span>)}
+    </div>
+  </div>
+
+  <!-- ── POSITIONING ──────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow reveal">// 01 · Who we are</p>
+      <p class="bigstatement reveal">
+        Founded as a vulnerability research firm, Vazkeft exists for one reason: the systems that
+        national security and critical infrastructure depend on are attacked by professionals —
+        and should be tested, defended, and built <em>by professionals who think the same way.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── CAPABILITIES ─────────────────────────────────────── -->
+  <section class="section section--line">
+    <div class="container">
+      <div class="sechead reveal">
+        <div>
+          <p class="eyebrow">// 02 · Capabilities</p>
+          <h2 class="h-lg">Four disciplines.<br />One adversarial mindset.</h2>
+        </div>
+        <a href="/capabilities/" class="btn btn--ghost">All capabilities</a>
+      </div>
+
+      <div class="capgrid">
+        {
+          capabilities.map((cap) => (
+            <a href={`/capabilities/${cap.slug}/`} class="capcard ticks reveal">
+              <p class="capcard__index">{cap.index}</p>
+              <h3 class="h-md">{cap.name}</h3>
+              <p class="capcard__body">{cap.short}</p>
+              <p class="capcard__more">READ CAPABILITY BRIEF →</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DOCTRINE ─────────────────────────────────────────── -->
+  <section class="section section--line">
+    <div class="container">
+      <p class="eyebrow reveal">// 03 · Doctrine</p>
+      <h2 class="h-lg reveal">How we operate</h2>
+      <div class="doctrine">
+        {
+          doctrine.map((d) => (
+            <div class="doctrine__item reveal">
+              <p class="doctrine__num">{d.num}</p>
+              <h3 class="h-md">{d.title}</h3>
+              <p>{d.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MISSION STRIP ────────────────────────────────────── -->
+  <section class="section section--line missionstrip">
+    <div class="container missionstrip__inner">
+      <div class="reveal">
+        <p class="eyebrow">// 04 · Mission</p>
+        <h2 class="h-lg">
+          Built for the missions<br />that can’t fail quietly.
+        </h2>
+        <p class="lede" style="margin-top:1.2rem">
+          From defense programs to the infrastructure civilians depend on, Vazkeft works where the
+          cost of a breach is measured in more than money.
+        </p>
+        <a href="/mission/" class="btn" style="margin-top:2rem">Our mission</a>
+      </div>
+      <div class="missionstrip__art ticks reveal" aria-hidden="true">
+        <pre class="missionstrip__term">
+$ vazkeft --engage
+[✓] scope defined ......... ROE signed
+[✓] target instrumented ... harness online
+[✓] hunt initiated ........ 3 anomalies triaged
+[✓] root cause isolated ... fix drafted
+[✓] disclosure filed ...... operators protected
+&gt; mission continues_</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ──────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="ctapanel ticks reveal">
+        <div>
+          <h2 class="h-lg">Put us on your problem.</h2>
+          <p class="lede" style="margin-top:0.8rem">
+            Engagements start with a conversation, not a contract. Tell us what you are protecting.
+          </p>
+        </div>
+        <a href="/contact/" class="btn btn--solid">Start the conversation</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* hero */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.55;
+  }
+
+  .hero__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding-block: clamp(5rem, 12vw, 9rem);
+  }
+
+  .hero__accent {
+    color: var(--accent);
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.4rem;
+    flex-wrap: wrap;
+  }
+
+  .hero__copy .lede {
+    margin-top: 1.4rem;
+  }
+
+  .hero__panel {
+    position: relative;
+    background: color-mix(in srgb, var(--panel) 78%, transparent);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--line-bright);
+    padding: 1.6rem;
+  }
+
+  .hero__panel-title {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero__readout {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .hero__readout div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px dashed var(--line);
+    padding-bottom: 0.7rem;
+  }
+
+  .hero__readout dt {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+  }
+
+  .hero__readout dd {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--text);
+    text-align: right;
+  }
+
+  .hero__status {
+    color: var(--accent) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .hero__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    50% {
+      opacity: 0.35;
+    }
+  }
+
+  /* ticker */
+  .tickerband {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-raise);
+    overflow: hidden;
+    padding-block: 0.7rem;
+  }
+
+  .tickerband__track {
+    display: flex;
+    gap: 2.5rem;
+    width: max-content;
+    animation: ticker 40s linear infinite;
+  }
+
+  .tickerband__track span {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 2.5rem;
+    white-space: nowrap;
+  }
+
+  .tickerband__track i {
+    color: var(--accent);
+    font-style: normal;
+    font-size: 0.5rem;
+  }
+
+  @keyframes ticker {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* positioning statement */
+  .bigstatement {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+    font-weight: 500;
+    line-height: 1.35;
+    max-width: 58rem;
+    text-wrap: pretty;
+  }
+
+  .bigstatement em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  /* section head with side button */
+  .sechead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  /* capability cards */
+  .capgrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .capcard {
+    position: relative;
+    display: block;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 2rem;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+
+  .capcard:hover {
+    border-color: var(--accent-dim);
+    background: var(--panel-2);
+    transform: translateY(-3px);
+  }
+
+  .capcard__index {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.4rem;
+  }
+
+  .capcard__body {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-top: 0.8rem;
+    min-height: 4.5rem;
+  }
+
+  .capcard__more {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    margin-top: 1.6rem;
+    transition: color 0.2s ease;
+  }
+
+  .capcard:hover .capcard__more {
+    color: var(--accent);
+  }
+
+  /* doctrine */
+  .doctrine {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 3rem;
+    margin-top: 3rem;
+  }
+
+  .doctrine__item p:last-child {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-top: 0.6rem;
+  }
+
+  .doctrine__num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.8rem;
+  }
+
+  /* mission strip */
+  .missionstrip__inner {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .missionstrip__art {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line-bright);
+    padding: 1.5rem;
+  }
+
+  .missionstrip__term {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.9;
+    color: var(--text-dim);
+    overflow-x: auto;
+  }
+
+  /* cta */
+  .ctapanel {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    background: linear-gradient(135deg, var(--panel) 0%, #0d1f18 100%);
+    border: 1px solid var(--accent-dim);
+    padding: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  @media (max-width: 900px) {
+    .hero__inner,
+    .missionstrip__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .capgrid,
+    .doctrine {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Radar sweep hero background
+  const canvas = document.getElementById('radar') as HTMLCanvasElement | null;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (canvas && !reduced) {
+    const ctx = canvas.getContext('2d')!;
+    let w = 0;
+    let h = 0;
+    let raf = 0;
+
+    interface Blip {
+      x: number;
+      y: number;
+      born: number;
+    }
+    let blips: Blip[] = [];
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = rect.width;
+      h = rect.height;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const draw = (t: number) => {
+      ctx.clearRect(0, 0, w, h);
+      // radar center sits off to the right so copy stays readable
+      const cx = w * 0.78;
+      const cy = h * 0.5;
+      const maxR = Math.max(w, h) * 0.55;
+
+      // rings
+      ctx.strokeStyle = 'rgba(53, 224, 140, 0.10)';
+      ctx.lineWidth = 1;
+      for (let r = maxR / 5; r <= maxR; r += maxR / 5) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      // crosshair lines
+      ctx.beginPath();
+      ctx.moveTo(cx - maxR, cy);
+      ctx.lineTo(cx + maxR, cy);
+      ctx.moveTo(cx, cy - maxR);
+      ctx.lineTo(cx, cy + maxR);
+      ctx.stroke();
+
+      // sweep
+      const angle = (t / 4000) * Math.PI * 2;
+      const grad = ctx.createConicGradient(angle, cx, cy);
+      grad.addColorStop(0, 'rgba(53, 224, 140, 0.20)');
+      grad.addColorStop(0.08, 'rgba(53, 224, 140, 0.0)');
+      grad.addColorStop(1, 'rgba(53, 224, 140, 0.0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, maxR, 0, Math.PI * 2);
+      ctx.fill();
+
+      // occasionally spawn a blip near the sweep edge
+      if (Math.random() < 0.02 && blips.length < 6) {
+        const r = maxR * (0.25 + Math.random() * 0.65);
+        blips.push({
+          x: cx + Math.cos(angle) * r,
+          y: cy + Math.sin(angle) * r,
+          born: t,
+        });
+      }
+      blips = blips.filter((b) => t - b.born < 3000);
+      for (const b of blips) {
+        const age = (t - b.born) / 3000;
+        ctx.fillStyle = `rgba(53, 224, 140, ${0.8 * (1 - age)})`;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = `rgba(53, 224, 140, ${0.35 * (1 - age)})`;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, 2.5 + age * 18, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      raf = requestAnimationFrame(draw);
+    };
+    raf = requestAnimationFrame(draw);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelAnimationFrame(raf);
+      else raf = requestAnimationFrame(draw);
+    });
+  }
+</script>

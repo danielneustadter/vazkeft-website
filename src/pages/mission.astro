@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const values = [
+  {
+    title: 'Truth in reporting',
+    body: 'If a system is broken, we say so — precisely, with evidence, and to the people who can fix it. If it is sound, we say that too. Our value is our credibility.',
+  },
+  {
+    title: 'Craft over scale',
+    body: 'We would rather do fewer engagements at research depth than many at scanner depth. Vazkeft grows only as fast as it can hire people who meet that bar.',
+  },
+  {
+    title: 'Responsible offense',
+    body: 'Offensive skills carry obligations: written authorization, coordinated disclosure, and restraint. We hold the line on all three, every engagement, no exceptions.',
+  },
+  {
+    title: 'Leave them stronger',
+    body: 'Every engagement ends with the customer more capable than we found them — tooling transferred, knowledge documented, engineers upskilled.',
+  },
+];
+---
+
+<BaseLayout
+  title="Mission — Vazkeft LLC"
+  description="Why Vazkeft exists: offense-informed cybersecurity for defense and critical-infrastructure missions, built on research depth and responsible offense."
+>
+  <section class="section pagehead">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="container" style="position:relative">
+      <p class="eyebrow">// Mission</p>
+      <h1 class="h-xl">Why Vazkeft exists</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container story">
+      <div class="reveal">
+        <p class="story__big">
+          The systems that matter most — defense programs, critical infrastructure, the software
+          supply chains behind both — are probed daily by professionals with time, funding, and
+          patience.
+        </p>
+        <p class="story__body">
+          Most of the security industry answers that threat with products, dashboards, and
+          checklists. Vazkeft answers it with research. We started as a vulnerability research
+          firm because we believe you cannot meaningfully defend, test, or build a system you do
+          not understand at the depth an attacker does.
+        </p>
+        <p class="story__body">
+          That founding discipline now anchors four capability areas — vulnerability research,
+          offensive security, managed cyber defense, and secure software delivery — run by a
+          deliberately small team that does the work itself. No subcontracted assessments, no
+          rebadged products, no findings we have not personally verified.
+        </p>
+        <p class="story__body">
+          We are building Vazkeft into the firm that mission owners call when the stakes make
+          "probably secure" an unacceptable answer.
+        </p>
+      </div>
+
+      <aside class="story__panel ticks reveal">
+        <p class="story__panel-title">// THE SHORT VERSION</p>
+        <dl>
+          <div><dt>WHAT</dt><dd>Cybersecurity research &amp; engineering</dd></div>
+          <div><dt>FOR WHOM</dt><dd>Defense &amp; critical-infrastructure missions</dd></div>
+          <div><dt>EDGE</dt><dd>Offense-informed, research-grade depth</dd></div>
+          <div><dt>MODEL</dt><dd>Small team, direct execution, full transfer</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="container">
+      <p class="eyebrow reveal">// Values</p>
+      <h2 class="h-lg reveal">What we hold ourselves to</h2>
+      <div class="values">
+        {
+          values.map((v, i) => (
+            <div class="values__item reveal">
+              <p class="values__num">{String(i + 1).padStart(2, '0')}</p>
+              <h3 class="h-md">{v.title}</h3>
+              <p>{v.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="container ctaline reveal">
+      <h2 class="h-lg">Work with us — or for us.</h2>
+      <div class="ctaline__actions">
+        <a href="/contact/" class="btn btn--solid">Start an engagement</a>
+        <a href="/careers/" class="btn btn--ghost">See careers</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .pagehead {
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .story {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .story__big {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .story__body {
+    color: var(--text-dim);
+    margin-top: 1.4rem;
+    max-width: 40rem;
+  }
+
+  .story__panel {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line-bright);
+    padding: 1.6rem;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .story__panel-title {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+
+  .story__panel dl {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .story__panel dt {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+  }
+
+  .story__panel dd {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    margin-top: 0.25rem;
+  }
+
+  .values {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 3rem;
+    margin-top: 3rem;
+  }
+
+  .values__num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.8rem;
+  }
+
+  .values__item p:last-child {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-top: 0.6rem;
+  }
+
+  .ctaline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .ctaline__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .story,
+    .values {
+      grid-template-columns: 1fr;
+    }
+
+    .story__panel {
+      position: static;
+    }
+  }
+</style>

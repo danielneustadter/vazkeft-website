@@ -1,0 +1,287 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { capabilities } from '../../data/capabilities';
+
+export function getStaticPaths() {
+  return capabilities.map((cap) => ({
+    params: { slug: cap.slug },
+    props: { cap },
+  }));
+}
+
+const { cap } = Astro.props;
+const others = capabilities.filter((c) => c.slug !== cap.slug);
+---
+
+<BaseLayout
+  title={`${cap.name} — Vazkeft LLC`}
+  description={cap.short}
+>
+  <section class="section pagehead">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="container" style="position:relative">
+      <p class="eyebrow">// Capability {cap.index}</p>
+      <h1 class="h-xl">{cap.name}</h1>
+      <p class="caphero">{cap.hero}</p>
+
+      <div class="readoutbar">
+        {
+          cap.readout.map((r) => (
+            <div>
+              <p class="readoutbar__label">{r.label}</p>
+              <p class="readoutbar__value">{r.value}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container splitgrid">
+      <div class="reveal">
+        <h2 class="h-md" style="color:var(--accent)">Overview</h2>
+        <p class="capsummary">{cap.summary}</p>
+      </div>
+      <div class="reveal">
+        <h2 class="h-md" style="color:var(--accent)">What you get</h2>
+        <ul class="outcomes">
+          {cap.outcomes.map((o) => <li>{o}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="container">
+      <p class="eyebrow reveal">// Services</p>
+      <h2 class="h-lg reveal">Inside this capability</h2>
+      <div class="svcgrid">
+        {
+          cap.services.map((s) => (
+            <div class="svc ticks reveal">
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="container">
+      <p class="eyebrow reveal">// Method</p>
+      <h2 class="h-lg reveal">How an engagement runs</h2>
+      <ol class="method">
+        {
+          cap.method.map((m) => (
+            <li class="reveal">
+              <p class="method__step">{m.step}</p>
+              <h3 class="h-md">{m.title}</h3>
+              <p class="method__body">{m.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="container">
+      <p class="eyebrow reveal">// Related</p>
+      <div class="related">
+        {
+          others.map((o) => (
+            <a href={`/capabilities/${o.slug}/`} class="related__card reveal">
+              <p class="related__index">{o.index}</p>
+              <p class="related__name">{o.name}</p>
+            </a>
+          ))
+        }
+      </div>
+      <div style="margin-top:3rem" class="reveal">
+        <a href="/contact/" class="btn btn--solid">Discuss this capability</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .pagehead {
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .caphero {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    color: var(--accent);
+    margin-top: 1.2rem;
+    max-width: 40rem;
+  }
+
+  .readoutbar {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1.4rem;
+  }
+
+  .readoutbar__label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+
+  .readoutbar__value {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--text);
+    margin-top: 0.3rem;
+  }
+
+  .splitgrid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3.5rem;
+  }
+
+  .capsummary {
+    color: var(--text-dim);
+    margin-top: 1rem;
+    font-size: 1.05rem;
+  }
+
+  .outcomes {
+    list-style: none;
+    margin-top: 1rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .outcomes li {
+    color: var(--text-dim);
+    padding-left: 1.6rem;
+    position: relative;
+    font-size: 0.98rem;
+  }
+
+  .outcomes li::before {
+    content: '◆';
+    color: var(--accent);
+    font-size: 0.6rem;
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+  }
+
+  .svcgrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  .svc {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 1.8rem;
+  }
+
+  .svc h3 {
+    font-size: 1.05rem;
+  }
+
+  .svc p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    margin-top: 0.6rem;
+  }
+
+  .method {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    counter-reset: step;
+  }
+
+  .method li {
+    border-top: 1px solid var(--line-bright);
+    padding-top: 1.2rem;
+  }
+
+  .method__step {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.7rem;
+  }
+
+  .method__body {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .related {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .related__card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 1.4rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .related__card:hover {
+    border-color: var(--accent-dim);
+  }
+
+  .related__index {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+  }
+
+  .related__name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .splitgrid,
+    .svcgrid {
+      grid-template-columns: 1fr;
+    }
+
+    .method {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .related {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .method {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const traits = [
+  {
+    title: 'You break things carefully',
+    body: 'You have found real vulnerabilities — in CTFs, bounty programs, open-source, or professional work — and you handled them responsibly.',
+  },
+  {
+    title: 'You go to root cause',
+    body: 'A crash is not a finding. You keep digging until you can explain why, how far it reaches, and what actually fixes it.',
+  },
+  {
+    title: 'You write like an engineer',
+    body: 'Your reports and commit messages can be handed to a stranger and acted on. Communication is part of the craft, not overhead.',
+  },
+  {
+    title: 'You automate yourself',
+    body: 'Anything you do twice becomes a harness, a script, or a pipeline. Tooling is how a small team punches up.',
+  },
+];
+
+const openRoles: { title: string; type: string; blurb: string }[] = [
+  // Add live roles here as they open. Empty = "open interest" mode.
+];
+---
+
+<BaseLayout
+  title="Careers — Vazkeft LLC"
+  description="Careers at Vazkeft LLC: a deliberately small, remote-first team of security researchers and engineers."
+>
+  <section class="section pagehead">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="container" style="position:relative">
+      <p class="eyebrow">// Careers</p>
+      <h1 class="h-xl">Small team.<br />Serious problems.</h1>
+      <p class="lede" style="margin-top:1.2rem">
+        Vazkeft hires slowly and deliberately. We are remote-first, research-driven, and allergic
+        to busywork. If you want your findings to matter more than your utilization rate, read on.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow reveal">// Profile</p>
+      <h2 class="h-lg reveal">Who does well here</h2>
+      <div class="traits">
+        {
+          traits.map((t, i) => (
+            <div class="trait ticks reveal">
+              <p class="trait__num">{String(i + 1).padStart(2, '0')}</p>
+              <h3>{t.title}</h3>
+              <p>{t.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="container">
+      <p class="eyebrow reveal">// Openings</p>
+      <h2 class="h-lg reveal">Current openings</h2>
+      {
+        openRoles.length > 0 ? (
+          <div class="roles">
+            {openRoles.map((r) => (
+              <div class="role reveal">
+                <h3>{r.title}</h3>
+                <p class="role__type">{r.type}</p>
+                <p>{r.blurb}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div class="noroles ticks reveal">
+            <p class="noroles__mono">// NO POSTED OPENINGS AT THIS TIME</p>
+            <p>
+              We keep a short list of researchers and engineers we want to work with when the next
+              seat opens. If the profile above sounds like you, introduce yourself — include
+              something you have broken, built, or written that you are proud of.
+            </p>
+            <a
+              href="mailto:vazkeft@gmail.com?subject=Introduction%20—%20Vazkeft%20careers"
+              class="btn"
+              style="margin-top:1.6rem"
+            >
+              Introduce yourself
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .pagehead {
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .traits {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  .trait {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 1.8rem;
+  }
+
+  .trait__num {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .trait h3 {
+    font-size: 1.08rem;
+  }
+
+  .trait p:last-child {
+    color: var(--text-dim);
+    font-size: 0.93rem;
+    margin-top: 0.6rem;
+  }
+
+  .noroles {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line-bright);
+    padding: 2.2rem;
+    margin-top: 3rem;
+    max-width: 44rem;
+  }
+
+  .noroles__mono {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    margin-bottom: 1rem;
+  }
+
+  .noroles p:not(.noroles__mono) {
+    color: var(--text-dim);
+  }
+
+  .roles {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  .role {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 1.8rem;
+  }
+
+  .role__type {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin: 0.4rem 0 0.8rem;
+  }
+
+  @media (max-width: 780px) {
+    .traits {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,37 @@
+---
+interface Props {
+  size?: number;
+}
+const { size = 26 } = Astro.props;
+---
+
+<span class="logo">
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 64 64"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path d="M6 12 L32 60 L58 12 L46 12 L32 38 L18 12 Z" fill="var(--accent)"></path>
+    <rect x="28.5" y="2" width="7" height="7" fill="var(--accent)"></rect>
+  </svg>
+  <span class="logo__word">VAZKEFT</span>
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .logo__word {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.3em;
+    color: var(--text);
+  }
+</style>

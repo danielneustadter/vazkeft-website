@@ -1,0 +1,159 @@
+---
+import Logo from './Logo.astro';
+
+const links = [
+  { href: '/capabilities/', label: 'Capabilities' },
+  { href: '/mission/', label: 'Mission' },
+  { href: '/contracting/', label: 'Contracting' },
+  { href: '/careers/', label: 'Careers' },
+];
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || path.startsWith(href + '');
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="/" class="header__brand" aria-label="Vazkeft home">
+      <Logo />
+    </a>
+
+    <nav class="header__nav" id="site-nav" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={['header__link', { 'is-active': isActive(link.href) }]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a href="/contact/" class="btn btn--solid header__cta">Engage</a>
+    </nav>
+
+    <button
+      class="header__burger"
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      aria-label="Toggle navigation"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.25rem;
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .header__link {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    transition: color 0.15s ease;
+    padding-block: 0.4rem;
+  }
+
+  .header__link:hover {
+    color: var(--text);
+  }
+
+  .header__link.is-active {
+    color: var(--accent);
+  }
+
+  .header__cta {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.72rem;
+  }
+
+  .header__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+  }
+
+  .header__burger span {
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  @media (max-width: 780px) {
+    .header__burger {
+      display: flex;
+    }
+
+    .header__nav {
+      position: fixed;
+      inset: 4.25rem 0 auto 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: var(--bg-raise);
+      border-bottom: 1px solid var(--line);
+      padding: 0.5rem var(--pad) 1.25rem;
+      display: none;
+    }
+
+    .header__nav.is-open {
+      display: flex;
+    }
+
+    .header__link {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header__cta {
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    .header__burger[aria-expanded='true'] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .header__burger[aria-expanded='true'] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .header__burger[aria-expanded='true'] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('site-nav');
+  toggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(Boolean(open)));
+  });
+</script>

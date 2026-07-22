@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const channels = [
+  {
+    label: 'ENGAGEMENTS',
+    title: 'Start an engagement',
+    body: 'Penetration tests, research projects, managed defense, pipeline builds — tell us what you are protecting and what worries you.',
+    mailto:
+      'mailto:vazkeft@gmail.com?subject=Engagement%20inquiry',
+    cta: 'vazkeft@gmail.com',
+  },
+  {
+    label: 'TEAMING',
+    title: 'Primes & partners',
+    body: 'Need a research-grade cyber bench on your effort? Request our capability statement and teaming information.',
+    mailto:
+      'mailto:vazkeft@gmail.com?subject=Teaming%20inquiry',
+    cta: 'vazkeft@gmail.com',
+  },
+  {
+    label: 'DISCLOSURE',
+    title: 'Report a vulnerability',
+    body: 'Found something in a system we operate or manage? We take coordinated disclosure seriously and will respond promptly.',
+    mailto:
+      'mailto:vazkeft@gmail.com?subject=Vulnerability%20disclosure',
+    cta: 'vazkeft@gmail.com',
+  },
+];
+---
+
+<BaseLayout
+  title="Contact — Vazkeft LLC"
+  description="Contact Vazkeft LLC to start an engagement, discuss teaming, or report a vulnerability."
+>
+  <section class="section pagehead">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="container" style="position:relative">
+      <p class="eyebrow">// Contact</p>
+      <h1 class="h-xl">Open a channel</h1>
+      <p class="lede" style="margin-top:1.2rem">
+        Every engagement starts with a direct conversation with the people who will do the work.
+        No sales layer, no qualification funnel.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container chgrid">
+      {
+        channels.map((c) => (
+          <a href={c.mailto} class="channel ticks reveal">
+            <p class="channel__label">// {c.label}</p>
+            <h2 class="h-md">{c.title}</h2>
+            <p class="channel__body">{c.body}</p>
+            <p class="channel__cta">{c.cta} →</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="container">
+      <div class="opsnote ticks reveal">
+        <p class="opsnote__mono">// OPERATIONS NOTE</p>
+        <p>
+          Vazkeft operates remote-first across the United States. Initial replies typically within
+          two business days. For sensitive reports, request our PGP key in your first message and
+          we will establish an encrypted channel before details are exchanged.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .pagehead {
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chgrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .channel {
+    position: relative;
+    display: block;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 2rem;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+
+  .channel:hover {
+    border-color: var(--accent-dim);
+    background: var(--panel-2);
+    transform: translateY(-3px);
+  }
+
+  .channel__label {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .channel__body {
+    color: var(--text-dim);
+    font-size: 0.93rem;
+    margin-top: 0.7rem;
+    min-height: 4.6rem;
+  }
+
+  .channel__cta {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    margin-top: 1.4rem;
+    transition: color 0.2s ease;
+  }
+
+  .channel:hover .channel__cta {
+    color: var(--accent);
+  }
+
+  .opsnote {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line-bright);
+    padding: 2rem;
+    max-width: 44rem;
+  }
+
+  .opsnote__mono {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    color: var(--amber);
+    margin-bottom: 0.9rem;
+  }
+
+  .opsnote p:last-child {
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 900px) {
+    .chgrid {
+      grid-template-columns: 1fr;
+    }
+
+    .channel__body {
+      min-height: 0;
+    }
+  }
+</style>

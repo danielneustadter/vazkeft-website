@@ -1,0 +1,280 @@
+/* ------------------------------------------------------------------
+   Vazkeft LLC — global design system
+   Dark, tactical, engineering-grade. Three type voices:
+   - Space Grotesk : display / headlines
+   - Inter        : body copy
+   - IBM Plex Mono: eyebrows, labels, data readouts
+------------------------------------------------------------------- */
+
+:root {
+  /* palette */
+  --bg: #05080d;
+  --bg-raise: #0a0f16;
+  --panel: #0c131c;
+  --panel-2: #101a25;
+  --line: #1b2634;
+  --line-bright: #2b3b4f;
+  --text: #e7edf5;
+  --text-dim: #a7b3c2;
+  --muted: #76839a;
+  --accent: #35e08c;
+  --accent-dim: #1d7a4f;
+  --accent-glow: rgba(53, 224, 140, 0.16);
+  --amber: #ffb454;
+  --danger: #ff5d5d;
+
+  /* type */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace;
+
+  /* rhythm */
+  --container: 76rem;
+  --pad: clamp(1.25rem, 4vw, 2.5rem);
+  --section-gap: clamp(4.5rem, 9vw, 8rem);
+  --radius: 4px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: #04130b;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+canvas {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* ------------------------------------------------------------------
+   layout primitives
+------------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+.section {
+  padding-block: var(--section-gap);
+  position: relative;
+}
+
+.section--line {
+  border-top: 1px solid var(--line);
+}
+
+/* mono eyebrow label, e.g. "// 02 · CAPABILITIES" */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.7;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.h-xl {
+  font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+}
+
+.h-lg {
+  font-size: clamp(2rem, 4.4vw, 3.1rem);
+}
+
+.h-md {
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+}
+
+.lede {
+  color: var(--text-dim);
+  font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+  max-width: 44rem;
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------------------
+   buttons
+------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  color: var(--accent);
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: var(--accent);
+  color: #04130b;
+  box-shadow: 0 0 32px var(--accent-glow);
+}
+
+.btn--solid {
+  background: var(--accent);
+  color: #04130b;
+}
+
+.btn--solid:hover {
+  background: #4ded9e;
+}
+
+.btn--ghost {
+  border-color: var(--line-bright);
+  color: var(--text-dim);
+}
+
+.btn--ghost:hover {
+  background: var(--panel-2);
+  color: var(--text);
+  border-color: var(--text-dim);
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------------
+   tactical decorations
+------------------------------------------------------------------- */
+
+/* corner ticks — put on a position:relative panel */
+.ticks::before,
+.ticks::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--accent);
+  border-style: solid;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.ticks::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+}
+
+.ticks::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 1px 1px 0;
+}
+
+/* faint blueprint grid backdrop */
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 25%, transparent 75%);
+  opacity: 0.35;
+}
+
+/* ------------------------------------------------------------------
+   scroll reveal (activated by src/scripts/site.js)
+------------------------------------------------------------------- */
+
+/* only hide revealables when JS is confirmed running (html.js set inline) */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+  }
+}

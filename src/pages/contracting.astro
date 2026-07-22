@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+/*
+ * NOTE FOR SITE OWNER: the identifier fields below are intentionally
+ * placeholders ("—"). Fill in real CAGE / UEI / registration data before
+ * launch, or keep "Available on request" until registrations complete.
+ * Do not publish numbers that are not yet issued.
+ */
+const identifiers = [
+  { label: 'ENTITY', value: 'Vazkeft LLC' },
+  { label: 'CAGE CODE', value: '—  (available on request)' },
+  { label: 'UEI (SAM.GOV)', value: '—  (available on request)' },
+  { label: 'BUSINESS TYPE', value: 'Small business · LLC' },
+  { label: 'WORK MODEL', value: 'Remote-first · United States' },
+];
+
+const naics = [
+  { code: '541511', desc: 'Custom Computer Programming Services' },
+  { code: '541512', desc: 'Computer Systems Design Services' },
+  { code: '541519', desc: 'Other Computer Related Services' },
+  { code: '541690', desc: 'Other Scientific & Technical Consulting Services' },
+];
+
+const fit = [
+  {
+    title: 'Prime-ready scope, sub-ready posture',
+    body: 'Vazkeft engages as a direct performer for commercial customers today, and as a subcontractor or teaming partner on government efforts where our capability areas fill a gap in a prime’s bench.',
+  },
+  {
+    title: 'Security-framework fluency',
+    body: 'Our engineering practices are designed to align with NIST SP 800-171 and 800-53 control families, and we build customer pipelines with those same frameworks in mind.',
+  },
+  {
+    title: 'Clean, auditable execution',
+    body: 'Written rules of engagement, evidence-backed reporting, and full deliverable transfer are standard on every engagement — the same rigor federal work demands.',
+  },
+];
+---
+
+<BaseLayout
+  title="Contracting — Vazkeft LLC"
+  description="Contracting information for Vazkeft LLC: entity identifiers, applicable NAICS codes, and teaming posture for government and defense-adjacent work."
+>
+  <section class="section pagehead">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="container" style="position:relative">
+      <p class="eyebrow">// Contracting</p>
+      <h1 class="h-xl">Doing business with Vazkeft</h1>
+      <p class="lede" style="margin-top:1.2rem">
+        Vazkeft LLC is an emerging small business. For contracting officers, primes, and teaming
+        partners: here is who we are on paper, and where we fit.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container congrid">
+      <div class="conpanel ticks reveal">
+        <p class="conpanel__title">// ENTITY IDENTIFIERS</p>
+        <dl>
+          {
+            identifiers.map((row) => (
+              <div>
+                <dt>{row.label}</dt>
+                <dd>{row.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <div class="conpanel ticks reveal">
+        <p class="conpanel__title">// APPLICABLE NAICS</p>
+        <dl>
+          {
+            naics.map((row) => (
+              <div>
+                <dt>{row.code}</dt>
+                <dd>{row.desc}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <p class="conpanel__note">
+          Codes reflect the services Vazkeft performs; registration status available on request.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="container">
+      <p class="eyebrow reveal">// Teaming</p>
+      <h2 class="h-lg reveal">Where we fit on your effort</h2>
+      <div class="fitgrid">
+        {
+          fit.map((f) => (
+            <div class="fit reveal">
+              <h3 class="h-md">{f.title}</h3>
+              <p>{f.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="container ctaline reveal">
+      <div>
+        <h2 class="h-lg">Capability statement</h2>
+        <p class="lede" style="margin-top:0.8rem">
+          Request our current capability statement and entity documentation by email.
+        </p>
+      </div>
+      <a href="mailto:vazkeft@gmail.com?subject=Capability%20statement%20request" class="btn btn--solid">
+        Request by email
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .pagehead {
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .congrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .conpanel {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line-bright);
+    padding: 1.8rem;
+  }
+
+  .conpanel__title {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+  }
+
+  .conpanel dl {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .conpanel dl div {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1rem;
+    border-bottom: 1px dashed var(--line);
+    padding-bottom: 0.7rem;
+  }
+
+  .conpanel dt {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+  }
+
+  .conpanel dd {
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+
+  .conpanel__note {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 1.2rem;
+  }
+
+  .fitgrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .fit h3 {
+    font-size: 1.1rem;
+  }
+
+  .fit p {
+    color: var(--text-dim);
+    font-size: 0.93rem;
+    margin-top: 0.7rem;
+  }
+
+  .ctaline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .congrid,
+    .fitgrid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

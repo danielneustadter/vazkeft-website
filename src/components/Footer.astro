@@ -1,0 +1,156 @@
+---
+const year = new Date().getFullYear();
+
+const columns = [
+  {
+    title: 'Capabilities',
+    links: [
+      { href: '/capabilities/vulnerability-research/', label: 'Vulnerability Research' },
+      { href: '/capabilities/offensive-security/', label: 'Offensive Security' },
+      { href: '/capabilities/managed-defense/', label: 'Managed Cyber Defense' },
+      { href: '/capabilities/secure-delivery/', label: 'Secure Software Delivery' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { href: '/mission/', label: 'Mission' },
+      { href: '/contracting/', label: 'Contracting' },
+      { href: '/careers/', label: 'Careers' },
+      { href: '/contact/', label: 'Contact' },
+    ],
+  },
+];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__word">VAZKEFT</p>
+        <p class="footer__tag">
+          Offense-informed cybersecurity research &amp; engineering for defense and
+          critical-infrastructure missions.
+        </p>
+      </div>
+
+      <div class="footer__cols">
+        {
+          columns.map((col) => (
+            <div class="footer__col">
+              <p class="footer__heading">{col.title}</p>
+              <ul>
+                {col.links.map((link) => (
+                  <li>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+        <div class="footer__col">
+          <p class="footer__heading">Contact</p>
+          <ul>
+            <li><a href="mailto:vazkeft@gmail.com">vazkeft@gmail.com</a></li>
+            <li><span>Remote-first · United States</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© {year} Vazkeft LLC. All rights reserved.</p>
+      <p class="footer__mono">EST. FOR THE MISSION EDGE</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--line);
+    background: var(--bg-raise);
+    padding-block: 4rem 2rem;
+    margin-top: var(--section-gap);
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: 3rem;
+  }
+
+  .footer__word {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: 0.35em;
+  }
+
+  .footer__tag {
+    color: var(--muted);
+    font-size: 0.9rem;
+    max-width: 20rem;
+    margin-top: 0.9rem;
+  }
+
+  .footer__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .footer__heading {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .footer__col ul {
+    list-style: none;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .footer__col a,
+  .footer__col span {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+
+  .footer__col a:hover {
+    color: var(--text);
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .footer__mono {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+  }
+
+  @media (max-width: 780px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+    }
+
+    .footer__cols {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
