@@ -4,7 +4,7 @@ Static marketing site for Vazkeft LLC, a cybersecurity research & engineering fi
 serving defense and critical-infrastructure missions. Replaces the previous
 one-page site at https://vazkeft.com.
 
-![Home hero — radar sweep, operational readout panel](docs/screenshots/home-hero.png)
+![Home hero — red constellation background, centered brand](docs/screenshots/home-hero.png)
 
 ## Screenshots
 
@@ -23,19 +23,18 @@ one-page site at https://vazkeft.com.
 ## Stack
 
 - [Astro 7](https://astro.build) — fully static output, zero client frameworks
-- Fonts (self-hosted via Fontsource): Space Grotesk (display), Inter (body),
-  IBM Plex Mono (labels/readouts)
-- Vanilla JS only: radar-sweep hero canvas, scroll reveals, animated counters
+- Fonts (self-hosted via Fontsource): Space Grotesk (display), Inter (body/UI)
+- Vanilla JS only: red constellation background canvas, scroll reveals
 
 ## Structure
 
 ```
 src/
   data/capabilities.ts        # single source of truth for the 4 capability areas
-  layouts/BaseLayout.astro    # head, fonts, header/footer, reveal + counter scripts
+  layouts/BaseLayout.astro    # head, fonts, header/footer, reveal + constellation scripts
   components/                 # Logo, Header, Footer
   pages/
-    index.astro               # home (radar hero, ticker, doctrine, CTA)
+    index.astro               # home (hero, capabilities, principles, CTA)
     capabilities/index.astro  # capability hub
     capabilities/[slug].astro # deep-dive pages generated from data/capabilities.ts
     mission.astro  contracting.astro  careers.astro  contact.astro  404.astro
@@ -59,5 +58,6 @@ src/
 - [ ] Decide whether to move contact from `vazkeft@gmail.com` to a
       `@vazkeft.com` mailbox (site-wide find/replace)
 - [ ] Add real roles to `openRoles` in `careers.astro` when hiring
-- [ ] Point vazkeft.com DNS at the new hosting (S3 + CloudFront, same pattern
-      as pluribus-website)
+- [x] Hosting: Cloudflare Pages (`vazkeft-website` project, auto-deploys from
+      `main`); vazkeft.com goes live when the Porkbun nameservers move to
+      Cloudflare

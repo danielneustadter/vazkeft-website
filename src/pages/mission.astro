@@ -28,7 +28,7 @@ const values = [
   <section class="section pagehead">
     <div class="grid-bg" aria-hidden="true"></div>
     <div class="container" style="position:relative">
-      <p class="eyebrow">// Mission</p>
+      <p class="eyebrow">Mission</p>
       <h1 class="h-xl">Why Vazkeft exists</h1>
     </div>
   </section>
@@ -60,12 +60,12 @@ const values = [
       </div>
 
       <aside class="story__panel ticks reveal">
-        <p class="story__panel-title">// THE SHORT VERSION</p>
+        <p class="story__panel-title">The short version</p>
         <dl>
-          <div><dt>WHAT</dt><dd>Cybersecurity research &amp; engineering</dd></div>
-          <div><dt>FOR WHOM</dt><dd>Defense &amp; critical-infrastructure missions</dd></div>
-          <div><dt>EDGE</dt><dd>Offense-informed, research-grade depth</dd></div>
-          <div><dt>MODEL</dt><dd>Small team, direct execution, full transfer</dd></div>
+          <div><dt>What</dt><dd>Cybersecurity research &amp; engineering</dd></div>
+          <div><dt>For whom</dt><dd>Defense &amp; critical-infrastructure missions</dd></div>
+          <div><dt>Edge</dt><dd>Offense-informed, research-grade depth</dd></div>
+          <div><dt>Model</dt><dd>Small team, direct execution, full transfer</dd></div>
         </dl>
       </aside>
     </div>
@@ -73,7 +73,7 @@ const values = [
 
   <section class="section section--line">
     <div class="container">
-      <p class="eyebrow reveal">// Values</p>
+      <p class="eyebrow reveal">Values</p>
       <h2 class="h-lg reveal">What we hold ourselves to</h2>
       <div class="values">
         {
@@ -131,15 +131,17 @@ const values = [
     position: relative;
     background: var(--panel);
     border: 1px solid var(--line-bright);
+    border-radius: var(--radius);
     padding: 1.6rem;
     position: sticky;
     top: 6rem;
   }
 
   .story__panel-title {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 1.2rem;
   }
@@ -150,10 +152,11 @@ const values = [
   }
 
   .story__panel dt {
-    font-family: var(--font-mono);
-    font-size: 0.64rem;
-    letter-spacing: 0.2em;
-    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
   }
 
   .story__panel dd {
@@ -170,10 +173,10 @@ const values = [
   }
 
   .values__num {
-    font-family: var(--font-mono);
-    color: var(--accent);
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    color: var(--accent-bright);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     margin-bottom: 0.8rem;
   }
 

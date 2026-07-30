@@ -71,9 +71,9 @@ export const capabilities: Capability[] = [
       },
     ],
     readout: [
-      { label: 'DISCIPLINE', value: 'RE · FUZZING · EXPLOIT ANALYSIS' },
-      { label: 'TARGETS', value: 'BINARIES · FIRMWARE · PROTOCOLS' },
-      { label: 'OUTPUT', value: 'ROOT CAUSE + POC + FIX' },
+      { label: 'Discipline', value: 'Reverse engineering · Fuzzing · Exploit analysis' },
+      { label: 'Targets', value: 'Binaries · Firmware · Protocols' },
+      { label: 'Output', value: 'Root cause + proof + fix' },
     ],
   },
   {
@@ -131,9 +131,9 @@ export const capabilities: Capability[] = [
       },
     ],
     readout: [
-      { label: 'DISCIPLINE', value: 'PENTEST · RED TEAM · BOUNTY OPS' },
-      { label: 'SURFACE', value: 'NET · WEB · API · CLOUD' },
-      { label: 'OUTPUT', value: 'ATTACK PATHS + REMEDIATION' },
+      { label: 'Discipline', value: 'Pentesting · Red teaming · Bounty ops' },
+      { label: 'Surface', value: 'Network · Web · API · Cloud' },
+      { label: 'Output', value: 'Attack paths + remediation' },
     ],
   },
   {
@@ -191,9 +191,9 @@ export const capabilities: Capability[] = [
       },
     ],
     readout: [
-      { label: 'DISCIPLINE', value: 'DETECT · HARDEN · RESPOND' },
-      { label: 'COVERAGE', value: 'ENDPOINT · NET · CLOUD · IDENTITY' },
-      { label: 'OUTPUT', value: 'VALIDATED DETECTIONS + RESPONSE' },
+      { label: 'Discipline', value: 'Detect · Harden · Respond' },
+      { label: 'Coverage', value: 'Endpoint · Network · Cloud · Identity' },
+      { label: 'Output', value: 'Validated detections + response' },
     ],
   },
   {
@@ -251,9 +251,9 @@ export const capabilities: Capability[] = [
       },
     ],
     readout: [
-      { label: 'DISCIPLINE', value: 'CI/CD · DEVSECOPS · SUPPLY CHAIN' },
-      { label: 'STACK', value: 'ACTIONS · GITLAB · IAC · CLOUD' },
-      { label: 'OUTPUT', value: 'HARDENED PIPELINE + PROVENANCE' },
+      { label: 'Discipline', value: 'CI/CD · DevSecOps · Supply chain' },
+      { label: 'Stack', value: 'GitHub Actions · GitLab · IaC · Cloud' },
+      { label: 'Output', value: 'Hardened pipeline + provenance' },
     ],
   },
 ];

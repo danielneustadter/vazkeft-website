@@ -8,11 +8,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
  * Do not publish numbers that are not yet issued.
  */
 const identifiers = [
-  { label: 'ENTITY', value: 'Vazkeft LLC' },
-  { label: 'CAGE CODE', value: '—  (available on request)' },
-  { label: 'UEI (SAM.GOV)', value: '—  (available on request)' },
-  { label: 'BUSINESS TYPE', value: 'Small business · LLC' },
-  { label: 'WORK MODEL', value: 'Remote-first · United States' },
+  { label: 'Entity', value: 'Vazkeft LLC' },
+  { label: 'CAGE code', value: '—  (available on request)' },
+  { label: 'UEI (SAM.gov)', value: '—  (available on request)' },
+  { label: 'Business type', value: 'Small business · LLC' },
+  { label: 'Work model', value: 'Remote-first · United States' },
 ];
 
 const naics = [
@@ -45,7 +45,7 @@ const fit = [
   <section class="section pagehead">
     <div class="grid-bg" aria-hidden="true"></div>
     <div class="container" style="position:relative">
-      <p class="eyebrow">// Contracting</p>
+      <p class="eyebrow">Contracting</p>
       <h1 class="h-xl">Doing business with Vazkeft</h1>
       <p class="lede" style="margin-top:1.2rem">
         Vazkeft LLC is an emerging small business. For contracting officers, primes, and teaming
@@ -57,7 +57,7 @@ const fit = [
   <section class="section">
     <div class="container congrid">
       <div class="conpanel ticks reveal">
-        <p class="conpanel__title">// ENTITY IDENTIFIERS</p>
+        <p class="conpanel__title">Entity identifiers</p>
         <dl>
           {
             identifiers.map((row) => (
@@ -71,7 +71,7 @@ const fit = [
       </div>
 
       <div class="conpanel ticks reveal">
-        <p class="conpanel__title">// APPLICABLE NAICS</p>
+        <p class="conpanel__title">Applicable NAICS</p>
         <dl>
           {
             naics.map((row) => (
@@ -91,7 +91,7 @@ const fit = [
 
   <section class="section section--line">
     <div class="container">
-      <p class="eyebrow reveal">// Teaming</p>
+      <p class="eyebrow reveal">Teaming</p>
       <h2 class="h-lg reveal">Where we fit on your effort</h2>
       <div class="fitgrid">
         {
@@ -138,14 +138,16 @@ const fit = [
     position: relative;
     background: var(--panel);
     border: 1px solid var(--line-bright);
+    border-radius: var(--radius);
     padding: 1.8rem;
   }
 
   .conpanel__title {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
     margin-bottom: 1.4rem;
   }
 
@@ -163,9 +165,9 @@ const fit = [
   }
 
   .conpanel dt {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
     color: var(--muted);
   }
 

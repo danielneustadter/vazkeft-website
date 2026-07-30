@@ -20,7 +20,7 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
   <section class="section pagehead">
     <div class="grid-bg" aria-hidden="true"></div>
     <div class="container" style="position:relative">
-      <p class="eyebrow">// Capability {cap.index}</p>
+      <p class="eyebrow">Capability {cap.index}</p>
       <h1 class="h-xl">{cap.name}</h1>
       <p class="caphero">{cap.hero}</p>
 
@@ -40,11 +40,11 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
   <section class="section">
     <div class="container splitgrid">
       <div class="reveal">
-        <h2 class="h-md" style="color:var(--accent)">Overview</h2>
+        <h2 class="h-md" style="color:var(--accent-bright)">Overview</h2>
         <p class="capsummary">{cap.summary}</p>
       </div>
       <div class="reveal">
-        <h2 class="h-md" style="color:var(--accent)">What you get</h2>
+        <h2 class="h-md" style="color:var(--accent-bright)">What you get</h2>
         <ul class="outcomes">
           {cap.outcomes.map((o) => <li>{o}</li>)}
         </ul>
@@ -54,7 +54,7 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
 
   <section class="section section--line">
     <div class="container">
-      <p class="eyebrow reveal">// Services</p>
+      <p class="eyebrow reveal">Services</p>
       <h2 class="h-lg reveal">Inside this capability</h2>
       <div class="svcgrid">
         {
@@ -71,7 +71,7 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
 
   <section class="section section--line">
     <div class="container">
-      <p class="eyebrow reveal">// Method</p>
+      <p class="eyebrow reveal">Method</p>
       <h2 class="h-lg reveal">How an engagement runs</h2>
       <ol class="method">
         {
@@ -89,7 +89,7 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
 
   <section class="section section--line">
     <div class="container">
-      <p class="eyebrow reveal">// Related</p>
+      <p class="eyebrow reveal">Related</p>
       <div class="related">
         {
           others.map((o) => (
@@ -117,7 +117,7 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
   .caphero {
     font-family: var(--font-display);
     font-size: clamp(1.15rem, 2.2vw, 1.5rem);
-    color: var(--accent);
+    color: var(--accent-bright);
     margin-top: 1.2rem;
     max-width: 40rem;
   }
@@ -132,16 +132,15 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
   }
 
   .readoutbar__label {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--muted);
   }
 
   .readoutbar__value {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
+    font-size: 0.92rem;
     color: var(--text);
     margin-top: 0.3rem;
   }
@@ -173,12 +172,14 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
   }
 
   .outcomes li::before {
-    content: '◆';
-    color: var(--accent);
-    font-size: 0.6rem;
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
     position: absolute;
     left: 0;
-    top: 0.45em;
+    top: 0.55em;
   }
 
   .svcgrid {
@@ -192,6 +193,7 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
     position: relative;
     background: var(--panel);
     border: 1px solid var(--line);
+    border-radius: var(--radius);
     padding: 1.8rem;
   }
 
@@ -220,10 +222,10 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
   }
 
   .method__step {
-    font-family: var(--font-mono);
-    color: var(--accent);
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    color: var(--accent-bright);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     margin-bottom: 0.7rem;
   }
 
@@ -243,6 +245,7 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
   .related__card {
     background: var(--panel);
     border: 1px solid var(--line);
+    border-radius: var(--radius);
     padding: 1.4rem;
     transition: border-color 0.2s ease;
   }
@@ -252,10 +255,10 @@ const others = capabilities.filter((c) => c.slug !== cap.slug);
   }
 
   .related__index {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    color: var(--accent);
-    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-bright);
+    letter-spacing: 0.1em;
   }
 
   .related__name {

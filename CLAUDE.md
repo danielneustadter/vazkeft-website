@@ -1,7 +1,7 @@
 # Vazkeft website
 
 Astro 7 static site for Vazkeft LLC (cybersecurity research & engineering).
-Dark tactical design system lives in `src/styles/global.css`; capability page
+Dark minimal red design system (near-black + #e50914 accents) lives in `src/styles/global.css`; capability page
 content lives in `src/data/capabilities.ts` (the four `/capabilities/*` pages
 are generated from it).
 

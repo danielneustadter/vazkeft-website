@@ -27,7 +27,7 @@ const columns = [
   <div class="container">
     <div class="footer__top">
       <div class="footer__brand">
-        <p class="footer__word">VAZKEFT</p>
+        <p class="footer__word">Vazkeft LLC</p>
         <p class="footer__tag">
           Offense-informed cybersecurity research &amp; engineering for defense and
           critical-infrastructure missions.
@@ -61,7 +61,6 @@ const columns = [
 
     <div class="footer__bottom">
       <p>© {year} Vazkeft LLC. All rights reserved.</p>
-      <p class="footer__mono">EST. FOR THE MISSION EDGE</p>
     </div>
   </div>
 </footer>
@@ -81,10 +80,10 @@ const columns = [
   }
 
   .footer__word {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-weight: 700;
-    font-size: 1.6rem;
-    letter-spacing: 0.35em;
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
   }
 
   .footer__tag {
@@ -101,11 +100,11 @@ const columns = [
   }
 
   .footer__heading {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-bright);
     margin-bottom: 1rem;
   }
 
@@ -136,12 +135,6 @@ const columns = [
     padding-top: 1.5rem;
     color: var(--muted);
     font-size: 0.82rem;
-  }
-
-  .footer__mono {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
   }
 
   @media (max-width: 780px) {

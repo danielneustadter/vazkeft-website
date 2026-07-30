@@ -9,16 +9,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="section nf">
     <div class="grid-bg" aria-hidden="true"></div>
     <div class="container" style="position:relative">
-      <p class="eyebrow">// ERROR 404</p>
-      <h1 class="h-xl">Target not found.</h1>
+      <p class="eyebrow">Error 404</p>
+      <h1 class="h-xl">Page not found.</h1>
       <p class="lede" style="margin-top:1.2rem">
-        The page you requested does not exist — or has been decommissioned.
+        The page you requested doesn’t exist — it may have moved, or the link may be out of date.
       </p>
-      <pre class="nf__term">
-$ vazkeft --locate {'{'}requested_path{'}'}
-[✗] no route matched
-[i] falling back to known-good coordinates…</pre>
-      <a href="/" class="btn btn--solid" style="margin-top:2.4rem">Return to base</a>
+      <a href="/" class="btn btn--solid" style="margin-top:2.4rem">Back to home</a>
     </div>
   </section>
 </BaseLayout>
@@ -28,18 +24,5 @@ $ vazkeft --locate {'{'}requested_path{'}'}
     position: relative;
     overflow: hidden;
     min-height: 60vh;
-  }
-
-  .nf__term {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    line-height: 1.9;
-    color: var(--text-dim);
-    background: var(--panel);
-    border: 1px solid var(--line);
-    padding: 1.4rem;
-    margin-top: 2.4rem;
-    max-width: 30rem;
-    overflow-x: auto;
   }
 </style>
